@@ -10,7 +10,7 @@ from livekit.agents import (
     cli,
 )
 from livekit.agents.pipeline import VoiceConversionPipeline, ConversionOptions
-from livekit.plugins import openai, deepgram, silero, ttsapi
+from livekit.plugins import openai, deepgram, silero
 
 
 load_dotenv(dotenv_path=".env.local")
@@ -37,8 +37,9 @@ async def entrypoint(ctx: JobContext):
         stt=deepgram.STT(
             model="nova-2-general"
         ),
-        tts=whisperspeech.TTS(
-            base_url="https://0f1d-2001-ee0-4e4f-33a0-8c94-2dc9-740e-c129.ngrok-free.app",
+        tts=openai.TTS(
+            model="tts-1",
+            voice="alloy"  # Options: alloy, echo, fable, onyx, nova, shimmer
         ),
         options=ConversionOptions(
             allow_interruptions=True,
