@@ -37,7 +37,7 @@ async def entrypoint(ctx: JobContext):
         stt=deepgram.STT(
             model="nova-2-general"
         ),
-        tts=whisperspeech.TTS(
+        tts=ttsapi.TTS(
             base_url="https://0f1d-2001-ee0-4e4f-33a0-8c94-2dc9-740e-c129.ngrok-free.app",
         ),
         options=ConversionOptions(
